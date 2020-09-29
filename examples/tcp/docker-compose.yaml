@@ -6,7 +6,7 @@ services:
         - "8081:80"
         - "5430:5430"
         volumes:
-        - ${PWD}/examples/tcp/database.conf:/etc/nginx/sites-enabled-stream/database.conf
+        - ./database.conf:/etc/nginx/sites-enabled-stream/database.conf
         restart: always
         extra_hosts:
         - "dockerhost:$DOCKERHOST"
