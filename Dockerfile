@@ -1,4 +1,4 @@
-FROM debian:7 as builder
+FROM ubuntu:focal-20200925 as builder
 
 ENV NGINX_VERSION=1.18.0 \
     NGINX_BUILD_ASSETS_DIR=/var/lib/docker-nginx \
@@ -7,7 +7,7 @@ ENV NGINX_VERSION=1.18.0 \
 ARG WITH_DEBUG=false
 
 RUN apt-get update \
-    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+    && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
       wget ca-certificates make gcc g++ pkg-config
 
 COPY nginx-build/ ${NGINX_BUILD_ASSETS_DIR}
@@ -22,7 +22,7 @@ COPY entrypoint.sh ${NGINX_BUILD_ROOT_DIR}/sbin/entrypoint.sh
 
 RUN chmod 755 ${NGINX_BUILD_ROOT_DIR}/sbin/entrypoint.sh
 
-FROM debian:7
+FROM ubuntu:focal-20200925
 
 LABEL maintainer="mohsal.saleem@gmail.com"
 
