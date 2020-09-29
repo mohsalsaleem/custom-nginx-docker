@@ -19,9 +19,15 @@ create_siteconf_dir() {
   chmod -R 755 ${NGINX_SITECONF_DIR}
 }
 
+create_streamconf_dir() {
+  mkdir -p ${NGINX_STREAMCONF_DIR}
+  chmod -R 755 ${NGINX_STREAMCONF_DIR}
+}
+
 create_log_dir
 create_tmp_dir
 create_siteconf_dir
+create_streamconf_dir
 
 # allow arguments to be passed to nginx
 if [[ ${1:0:1} = '-' ]]; then

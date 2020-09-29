@@ -1,0 +1,12 @@
+version: '3'
+services:
+    nginx:
+        image: mohsalsaleem/nginx:latest
+        ports:
+        - "8081:80"
+        - "5430:5430"
+        volumes:
+        - /home/kloudone/Work/Broadcom/Email/database.conf:/etc/nginx/sites-enabled-stream/database.conf
+        restart: always
+        extra_hosts:
+        - "dockerhost:$DOCKERHOST"

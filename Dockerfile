@@ -27,13 +27,14 @@ FROM ubuntu:focal-20200925
 LABEL maintainer="mohsal.saleem@gmail.com"
 
 ENV NGINX_USER=www-data \
+    NGINX_STREAMCONF_DIR=/etc/nginx/sites-enabled-stream \
     NGINX_SITECONF_DIR=/etc/nginx/sites-enabled \
     NGINX_LOG_DIR=/var/log/nginx \
-    NGINX_TEMP_DIR=/varlib/nginx
+    NGINX_TEMP_DIR=/var/lib/nginx
 
 COPY --from=builder /var/lib/docker-nginx/rootfs /
 
-EXPOSE 80/tcp 443/tcp
+EXPOSE 80/tcp 443/tcp 5432/tcp
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 
