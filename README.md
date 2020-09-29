@@ -6,3 +6,5 @@ An example repository that builds a custom nginx docker image with extra flags
 
 # Run
 `docker-compose up`
+
+Inspired by https://github.com/sameersbn/docker-nginx
